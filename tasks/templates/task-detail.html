@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="task-detail">
+  <h1>Task Details</h1>
+
+  <div class="task-card">
+    <h2>{{ object.title }}</h2>
+
+    <p><strong>Description:</strong> {{ object.description|default:"No description." }}</p>
+
+    <p><strong>Priority:</strong> {{ object.get_priority_display }}</p>
+
+    <p><strong>Due Date:</strong> {{ object.due_date|date:"F j, Y" }}</p>
+
+    <p>
+      <strong>Status:</strong>
+      {% if object.completed %}
+        <span class="completed">✔ Completed</span>
+      {% else %}
+        <span class="not-completed">❌ Not completed</span>
+      {% endif %}
+    </p>
+
+    <div class="task-actions">
+      <a href="{% url 'update-task' object.pk %}" class="btn edit-btn">
+        <i class="fa-solid fa-pen-to-square"></i> Edit
+      </a>
+      <a href="{% url 'delete-task' object.pk %}" class="btn delete-btn">
+        <i class="fa-solid fa-trash"></i> Delete
+      </a>
+      <a href="{% url 'home' %}" class="btn back-btn">
+        ← Back to tasks
+      </a>
+    </div>
+  </div>
+</div>
+{% endblock %}

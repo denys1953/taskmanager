@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Edit: {{ task.title }}</h2>
+
+  <form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label class="form-label">Title</label>
+      {{ form.title }}
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Description</label><br>
+      {{ form.description }}
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Priority</label>
+      {{ form.priority }}
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Due Date</label>
+      {{ form.due_date }}
+    </div>
+    <button type="submit" class="btn btn-success">Update</button>
+    <a href="{% url 'home' %}" class="btn btn-secondary">← Back to tasks</a>
+  </form>
+
+{% endblock %}

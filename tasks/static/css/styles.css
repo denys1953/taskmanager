@@ -5,8 +5,39 @@ body {
     padding: 0;
 }
 
+nav {
+    background-color: #4CAF50;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+
+.nav-left {
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #d0f0d0;
+}
+
 .container {
-    max-width: 600px;
+    max-width: 1000px;
     margin: 50px auto;
     background-color: #ffffff;
     border-radius: 10px;
@@ -59,18 +90,158 @@ h1 {
     border-bottom: 1px solid #eee;
 }
 
-.task-list li.completed {
+.task-list li span.completed {
     text-decoration: line-through;
     color: #999;
 }
 
-.actions a {
-    margin-left: 10px;
-    text-decoration: none;
-    font-size: 18px;
-    transition: 0.2s;
+.actions {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-top: 8px;
 }
 
-.actions a:hover {
-    opacity: 0.6;
+a {
+  text-decoration: none;
+  color: inherit;
 }
+
+a:hover,
+a:focus,
+a:active,
+a:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+.actions form {
+  margin: 0;
+}
+
+.actions button {
+  background: #f0f0f0;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 12px;
+  cursor: pointer;
+  font-size: 0; /* прибирає зайві пробіли між inline-елементами */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.actions button i {
+  font-size: 20px;
+}
+
+.actions button:hover {
+  background: #ddd;
+}
+
+.actions .complete-btn {
+  color: #4caf50;
+}
+
+.actions .complete-btn:hover {
+  background: #4caf50;
+  color: white;
+}
+
+.actions .delete-btn {
+  color: #f44336;
+}
+
+.actions .delete-btn:hover {
+  background: #f44336;
+  color: white;
+}
+
+  .task-detail {
+    max-width: 600px;
+    margin: 30px auto;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+  }
+
+  .task-card {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 12px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+
+  .task-card h2 {
+    margin-top: 0;
+  }
+
+  .task-actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    text-decoration: none;
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 14px;
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .edit-btn {
+    background-color: #4caf50;
+  }
+
+  .delete-btn {
+    background-color: #f44336;
+  }
+
+  .back-btn {
+    background-color: #607d8b;
+  }
+
+  .completed {
+    color: green;
+    font-weight: bold;
+  }
+
+  .not-completed {
+    color: red;
+    font-weight: bold;
+  }
+
+  .add-task-container {
+    margin-top: 30px;
+    text-align: center;
+  }
+
+  .add-task-btn {
+    display: inline-block;
+    width: 100%;
+    max-width: 100%;
+    padding: 5px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+  }
+
+  .add-task-btn:hover {
+    background-color: #45a049;
+  }
+
+  .add-task-btn i {
+    margin-right: 8px;
+  }

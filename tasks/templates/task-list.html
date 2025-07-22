@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Task Manager</h1>
+<ul class="task-list">
+    {% for task in tasks %}
+        <li class="task-item">
+            <div class="actions">
+                <form method="post" action="{% url 'task-complete' task.id %}">
+                    {% csrf_token %}
+                    {% if task.completed %}
+                        <button type="submit" class="complete-btn" title="Mark as completed">
+                            <i class="fa-solid fa-check-square"></i>
+                        </button>
+                    {% else %}
+                        <button type="submit" class="complete-btn" title="Mark as completed">
+                            <i class="fa-regular fa-square"></i>
+                        </button>
+                    {% endif %}
+                </form>
+                <a href="{% url 'task-detail' task.id %}">
+                    <span class="task-title {% if task.completed %}completed{% endif %}">
+                        {{ task.title }}
+                    </span>
+                </a>
+
+            </div>
+            <div class="actions">
+                <span class="task-title" title="Due Date">
+                    {% if task.due_date %}
+                    {{ task.due_date }}
+                    {% endif %}
+                </span>
+                <span class="task-title" title="Priority">
+                    {{ task.priority }}
+                </span>
+
+                <a href="{% url 'update-task' task.id %}">
+                    <button class="edit-btn" title="Edit Task">
+                      <i class="fa-solid fa-pen-to-square"></i>
+                    </button>
+                </a>
+                <form method="post" action="{% url 'delete-task' task.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="delete-btn" title="Delete Task">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </form>
+            </div>
+        </li>
+    {% empty %}
+        <li>No tasks yet.</li>
+    {% endfor %}
+</ul>
+<div class="add-task-container">
+  <a href="{% url 'task-create' %}" class="add-task-btn">
+    <i class="fa-solid fa-plus"></i> Add Task
+  </a>
+</div>
+
+{% endblock %}

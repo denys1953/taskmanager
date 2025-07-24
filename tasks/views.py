@@ -57,9 +57,3 @@ def delete(request, task_id):
     return redirect('home')
 
 
-def register(request):
-    pass
-
-def login(request):
-    pass
-

@@ -4,6 +4,17 @@ from django.views.generic import TemplateView, ListView, UpdateView, DetailView,
 from .models import Task
 from django.urls import reverse_lazy
 from .forms import TaskUpdateForm, TaskCreateForm
+from rest_framework import generics
+from .models import Task
+from .serializers import TaskSerializer
+
+class TaskListCreateAPIView(generics.ListCreateAPIView):
+    queryset = Task.objects.all()
+    serializer_class = TaskSerializer
+
+class TaskRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Task.objects.all()
+    serializer_class = TaskSerializer
 
 
 class TasksHome(ListView):
@@ -51,5 +62,4 @@ def register(request):
 
 def login(request):
     pass
-
 
